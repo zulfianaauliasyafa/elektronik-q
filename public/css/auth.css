@@ -1,0 +1,12 @@
+.login-form{
+    width: 20rem;
+    max-width: 90%;
+    margin: auto;
+    display: block;
+}
+.btnhome:hover,
+.btnhome :active {
+  background-color: #445925;
+  text-decoration: none;
+  color: white;
+}

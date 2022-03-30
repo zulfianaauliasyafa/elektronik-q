@@ -1,0 +1,33 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+
+<body>
+   <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <div class="reset">
+        <div class="allheader text-center">
+            <h2>Forgoten your password?</h2>
+            <p>If your email address contains dot (.) before the @, please omit them. </p>
+        </div>
+<div class="forgoten">
+       
+        <% if (errorMessage) { %>
+            <div class="user-message user-message--error"><%= errorMessage %></div>
+        <% } %>
+        <form class="login-form" action="/reset" method="POST">
+            <div class="form-group">
+                <label for="email">Enter the e-mail address associated with your account:</label>
+                <input class="form-control" type="email" name="email" id="email">
+            </div>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button class="btnhome" type="submit">Submit</button>
+        </form>
+
+
+    </div>
+    </div>
+    </main>
+<%- include('../includes/end.ejs') %>

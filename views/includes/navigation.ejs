@@ -1,0 +1,69 @@
+<header class="main-header">
+    <button id="side-menu-toggle"><i class='fas fa-bars' style='font-size:36px'></i></button>
+    <nav class="main-header__nav">
+        <ul class="main-header__item-list">
+
+            <li class="main-header__item">
+                <a class="<%= path === '/' ? 'active' : '' %>" href="/">Home</a>
+            </li>
+
+            <li class="main-header__item">
+                <a class="<%= path === '/about' ? 'active' : '' %>" href="/about">About</a>
+            </li>
+
+            <li class="main-header__item">
+                <a class="<%= path === '/products' ? 'active' : '' %>" href="/products">Products</a>
+            </li>
+            <li class="main-header__item">
+                <a class="<%= path === '/tutorial' ? 'active' : '' %>" href="/tutorial">Tutorials</a>
+            </li>
+            <li class="main-header__item">
+                <a class="<%= path === '/contact' ? 'active' : '' %>" href="/contact">Contact</a>
+            </li>
+            <li class="main-header__item">
+                <a class="<%= path === '/login' ? 'active' : '' %>" href="/login">Login</a>
+            </li>
+            <li class="main-header__item">
+                <a class="<%= path === '/admin/add-product' ? 'active' : '' %>" href="/admin/add-product">Add Product</a>
+            </li>
+            <li class="main-header__item">
+                <a class="<%= path === '/cart' ? 'active' : '' %>" href="/cart">Cart</a>
+            </li>
+            <li class="main-header__item">
+                <a class="<%= path === '/userdash' ? 'active' : '' %>" href="/userdash">Profile</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<nav class="mobile-nav">
+    <ul class="mobile-nav__item-list">
+        <li class="mobile-nav__item">
+            <a class="<%= path === '/' ? 'active' : '' %>" href="/">Home</a>
+        </li>
+        <li class="mobile-nav__item">
+            <a class="<%= path === '/about' ? 'active' : '' %>" href="/about">About</a>
+        </li>
+        <li class="mobile-nav__item">
+            <a class="<%= path === '/products' ? 'active' : '' %>" href="/products">Products</a>
+        </li>
+        <li class="mobile-nav__item">
+            <a class="<%= path === '/tutorial' ? 'active' : '' %>" href="/tutorial">Tutorials</a>
+        </li>
+        <li class="mobile-nav__item">
+            <a class="<%= path === '/contact' ? 'active' : '' %>" href="/contact">Contact</a>
+        </li>
+        <% if (!isAuthenticated) { %>
+            <li class="mobile-nav__item">
+                <a class="<%= path === '/login' ? 'active' : '' %>" href="/login">Login</a>
+            </li>
+        <% } else { %>
+            <li class="mobile-nav__item">
+                <form action="/logout" method="post">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button type="submit">Logout</button>
+                </form>
+            </li>
+        <% } %>
+    </ul>
+</nav>

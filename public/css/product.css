@@ -1,0 +1,99 @@
+.product-form {
+    width: 20rem;
+    max-width: 90%;
+    margin: auto;
+    display: block;
+}
+
+.product-item {
+    width: 20rem;
+    max-width: 95%;
+    margin: 1rem;
+}
+
+.product__title {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.product__price {
+    text-align: center;
+    color: #4d4d4d;
+    margin-bottom: 0.5rem;
+}
+
+.product__description {
+    text-align: center;
+}
+.allheader{
+    text-align: center;
+    font-family: 'Special Elite', cursive;
+   }
+
+.prdmain{
+    margin-bottom: 50%;
+   margin-top: 10%;
+   }
+.product-details{
+     display: flex;
+     flex-direction: row;
+    width: 85%;
+     justify-content: center;
+     margin: auto;
+}
+
+@media (max-width: 768px) {
+    .product-details{
+        display: flex;
+        flex-direction: column;
+    }
+  }
+.prd1 img{
+    width: 100%;
+}
+.prd2{
+    width: 100%;
+    padding-left: 10%;
+}
+.prd2 h2{
+    padding-top:2rem;
+    color:chocolate;
+}
+.prd2 p{
+    padding-top:2rem;
+}
+
+.btnhomep{
+    display: inline-block;
+    padding: 0.25rem 1rem;
+    text-decoration: none;
+    font: inherit;
+    border: 1px solid #445925;
+    color:#445925;
+    background: white;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.btnhomep:focus,
+.btnhomep:hover{
+    background-color: #445925;
+    text-decoration: none;
+    color: white;
+    border-color: #445925 ;
+}
+
+.need2log{
+    margin-top: 30px;;
+  }
+.need2log p{
+    margin:auto;
+    text-align: center;
+}
+.need2log a{
+color:chocolate;
+}
+.need2log a:hover{
+    color:#445925;
+    text-decoration: none;
+    }

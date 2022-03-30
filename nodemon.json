@@ -1,0 +1,8 @@
+{
+    "env": {
+        "MONGO_USER": "user_1",
+        "MONGO_PASSWORD": "niceday",
+        "MONGO_DEFAULT_DATABASE": "shop"
+    }
+}
+

@@ -1,0 +1,81 @@
+<%- include('../includes/head.ejs') %>
+  <link rel="stylesheet" href="/css/cart.css">
+    </head>
+
+    <body>
+     
+        <%- include('../includes/navigation.ejs') %>
+        <main>
+            <section>
+            <div class="allheader text-center">
+                <h1>My cart</h1>
+           </div>
+            
+            <% if (products.length > 0) { %>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Subtotal</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                   
+                    <tbody>
+                
+                        <tr> 
+        <% products.forEach(p => { %>
+                            <th><%= p.productId.title %> </th>
+                            <th> <p><%= p.quantity %></p></th>  
+                            <th><p><%= p.productId.price %></p></th>   
+                            <th><%= p.quantity * p.productId.price %></th>
+                            <th> 
+                                <form action="/cart-delete-item" method="POST">
+                                    <input type="hidden" value="<%= p.productId._id %>" name="productId">
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                    <button class="btn danger" type="submit">Delete</button>
+                                </form>
+                            </th>       
+                        </tr>         
+           <% }) %>
+                    
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                         <td><h5>Estimated shipping</h5></td>
+                        <td ><h5><strong>FREE</strong></h5></td>
+                        <td>   </td>
+                    </tr>
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td><h3>Total</h3></td>
+                        <td><h3><strong><% if(locals.total) { %><%= locals.total.toFixed(2) %><%}else{%>0.00<%}%></strong></h3></td>
+                        <td>   </td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td>   </td>
+                        <td>   </td>
+                        <td> 
+                           
+                            <a class="btnhome" href="/products" type="button" >Back to Products</a>
+                        </td>
+                      
+                    </tr>
+            </tbody>
+                </table>
+           
+            <% } else { %>
+                <div class="empty centered">
+                    <h3>You have no products on your cart.</h3>
+                </div>
+              
+            <% } %>
+
+</section>
+            
+        </main>
+        <%- include('../includes/end.ejs') %>

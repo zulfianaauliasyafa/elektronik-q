@@ -1,0 +1,32 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/product.css">
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <main class="prdmain">
+        <div class="product-details">
+            <div class="prd1">
+              <img src="/<%= product.imageUrl %>" alt="<%= product.title %>">
+            </div>
+
+            <div class="prd2">
+                <h1><%= product.title %></h1>
+                <h2>Rp <%= product.price %> </h2>
+                <p><%= product.description %></p>
+                <% if (isAuthenticated) { %>
+                <%- include('../includes/add-to-cart.ejs', {product:product}) %>
+                <% } %>
+
+
+                    <div class="need2log">
+                        <p>To add this item to your cart, please <a href="/login">Login</a> to your acount.<br>
+                        If you havent register yet. <a href="/register">Register</a> now!</p>
+                    </div>
+
+            </div>
+
+        </div>
+
+    </main>
+    <%- include('../includes/end.ejs') %>

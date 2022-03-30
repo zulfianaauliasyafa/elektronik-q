@@ -1,0 +1,33 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+
+<body>
+   <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <div class="allheader text-center">
+            <h1>Account Control</h1>
+          </div>
+
+<article class= "centered userdash">
+    <ul >
+            
+        <li class=" ">
+            <a class="btnuserdash" href="/auth/user-edit">My details</a>
+        </li>
+        <li class="">
+            <a class="btnuserdash" href="/orders">My Orders</a>
+        </li>
+        <li>
+            <form class="userdashf" action="/logout" method="post">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button class="btnuserdash" type="submit">Logout</button>
+            </form>
+        </li>
+    </ul>
+</article>
+       
+    </main>
+<%- include('../includes/end.ejs') %>

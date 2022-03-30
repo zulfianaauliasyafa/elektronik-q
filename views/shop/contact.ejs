@@ -1,0 +1,44 @@
+<%- include('../includes/head.ejs') %>
+</head>
+
+<body>
+   <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <div class="allheader text-center">
+            <h1>Contact Us</h1>
+        </div>
+      
+        <div class="concontainer">
+         
+            <div class="contact-form">
+                <h2 class="subtitle">We are here assist you.</h2>
+<p>Please enter your contact details (* required fields). Please feel free to contact Bag Store with any comments and suggestions about our online shop. We will endeavour to reply to your email promptly. 
+</p>
+<br>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name <span class="required">*</span></label>
+                        <input type="text" class="form-control"  name="name" placeholder="Your Name" />
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Email address <span class="required">*</span></label>
+                      <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                      <label for="message">Your Message <span class="required">*</span></label>
+                      <textarea name="text" class="form-control"  id="" rows="8" placeholder="Your Message"></textarea>
+                    </div>
+
+                    <button type="submit" class="btnhome btncontact">Submit</button>
+                  </form>
+            </div>
+            <div class="map">
+                <iframe src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Mayor%20Street%20Lower,%20International%20Financial%20Services%20Centre,%20Dublin+(HappyKnots)&amp;t=p&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" width="100%" height="650px" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+
+
+</main>
+<%- include('../includes/end.ejs') %>

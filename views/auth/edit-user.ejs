@@ -1,0 +1,121 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+
+<body>
+   <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <div class="allheader">
+            <h1>Edit Details</h1>
+        </div>
+        
+
+        <% if (errorMessage) { %>
+            <div class= "user-message user-message--error">
+                <%= errorMessage %>
+            </div>
+        <% } %>
+        
+        <form class="editform login-form" action="/auth/user-edit" method="POST" novalidate>    
+            <div class="form-group ">
+                <label for="email">E-Mail</label>
+                <input 
+                class="form-control <%= validationErrors.find(e => e.param === 'email' ) ? 'invalid' : ' ' %>"
+                type="email" 
+                name="email" 
+                id="email" 
+                value="<%= oldInput.email %>">
+            </div>
+           
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input 
+                class="form-control <%= validationErrors.find(e => e.param === 'password' ) ? 'invalid' : ' ' %>"
+                type="password" 
+                name="password" 
+                id="password" 
+                value="<%= oldInput.password %>">
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input 
+                class="form-control <%= validationErrors.find(e => e.param === 'confirmPassword' ) ? 'invalid' : ' ' %>"
+                type="password" 
+                name="confirmPassword" 
+                id="confirmPassword" 
+                value="<%= oldInput.confirmPassword %>">
+            </div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input 
+                class="form-control <%= validationErrors.find(e => e.param === 'name' ) ? 'invalid' : ' ' %>"
+                type="text" name="name" id="name"
+                value="<%= oldInput.name %>">
+            </div>
+            <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input 
+                class="form-control <%= validationErrors.find(e => e.param === 'lname' ) ? 'invalid' : ' ' %>"
+                type="text" name="lname" id="lname"
+                value="<%= oldInput.lname %>">
+            </div>
+        
+            <h2>Billing Address Details</h2>
+            <div class="form-group">
+              <label for="address1">Address</label>
+              <input 
+              class="form-control <%= validationErrors.find(e => e.param === 'address1' ) ? 'invalid' : ' ' %>"
+              type="text" name="address1" id="address1" placeholder="1234 Main St"
+              value="<%= oldInput.address1 %>">
+            </div>
+            <div class="form-group">
+              <label for="address2">Address 2</label>
+              <input 
+              class="form-control <%= validationErrors.find(e => e.param === 'address2' ) ? 'invalid' : ' ' %>"
+              type="text" name="address2" id="address2" placeholder="Apartment, studio, or floor"
+              value="<%= oldInput.address2 %>">
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputCountry">Country</label>
+                <select id="inputCountry" class="form-control">
+                  <option selected>Choose...</option>
+                  <% for (let i=0;i < oldInput.countries.length;i++) { %>
+                    <option value="<%= oldInput.countries[i] %>"><%= oldInput.countries[i] %></option>
+                <% } %>
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputCity">City</label>
+                <select id="inputCity" class="form-control">
+                  <option selected>Choose...</option>
+                </select>
+              </div>
+              <div class="form-group col-md-2">
+                <label for="inputZip">Zip</label>
+                <input type="text" class="form-control" id="inputZip">
+              </div>
+            </div>
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <button class="btnhome" type="submit">Save changes</button>
+          <a href="/userdash" type="button" class="btnhome">Cancel</a>
+      </form>
+    </main>
+
+    <script>
+      var countrySelect = document.getElementById('inputCountry');
+      var citySelect = document.getElementById('inputCity');
+
+      countrySelect.addEventListener('change', setCities);
+
+
+      function setCities() {
+
+        var cities = JSON.parse('<%-JSON.stringify(oldInput.cities)%>');
+        citySelect.innerHTML = cities[countrySelect.value].map(city => `<option value=${city}>${city}</option>`).join('');
+      }
+    </script>
+<%- include('../includes/end.ejs') %>

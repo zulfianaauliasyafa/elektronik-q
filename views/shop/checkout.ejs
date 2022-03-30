@@ -1,0 +1,48 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/cart.css">
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+        <main>
+<section class="checkoutsection">
+            <div class="allheader">
+                <h1>Checkout</h1>
+              </div>
+
+              <ul class="cart__item-list">
+                  <h3>Order Summary</h3>
+                <% products.forEach(p => { %>
+                    <li class="cart__item">
+                        <h1><%= p.productId.title %></h1>
+                        <h2>Quantity: <%= p.quantity %></h2>
+                    </li>
+                <% }) %>
+            </ul>
+            <div class="centered">
+                <div class="cart_pay">
+                    <div class="cart__item_pay">
+                        <h3>Total  </h3>
+                        <h2>  Rp <%= totalSum %></h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="centered">
+                <button id="order-btn" class="btnhome">Process Payment</button>
+                <script src="https://js.stripe.com/v3/"></script>
+                <script>
+                    var stripe = Stripe('pk_test_51HBOdPKXLgEE35XHCs2HGiEm4VGaIW750zumvZQt1o8G2Ymh7YhR1VihhvaQhNOOs1smQvu0GQbUkw9KSjL62aJQ00Nz9bgeuJ');
+                    var orderBtn = document.getElementById('order-btn');
+                    orderBtn.addEventListener('click', function() {
+                        //redirect user to stripe page to enter details.
+                        stripe.redirectToCheckout({
+                            sessionId: '<%= sessionId %>'
+                        });
+                    });
+                </script>
+            </div>
+       
+        </section>
+        </main>
+    <%- include('../includes/end.ejs') %>

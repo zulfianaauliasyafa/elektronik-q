@@ -1,0 +1,57 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/orders.css">
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+        <main>
+            <div class="allheader text-center">
+                <h1>Your Orders</h1>
+              </div>
+
+<div class="orderscontent">
+            <% if (orders.length <= 0) { %>
+                <h1>Nothing there!</h1>
+    <% } else { %>
+        <div class="userstable">
+            <table class="table">
+              
+                <thead>
+                  <tr>
+                        <th scope="col">OrderId</th>
+                        <th scope="col">Date Created</th>
+                        <th scope="col">User Id</th>
+                        <th scope="col">Items</th>
+                        <th scope="col"></th>
+                  </tr>
+                </thead>
+            
+
+                <tbody>
+                    <% orders.forEach(order => { %>
+                  <tr>
+                   
+                    
+                    <td><%= order._id %> </td>
+                    
+                    <td><% if(order.date) { %> <%= order.date %> <%
+                    } %></td>
+                    <td><%= order.user.email %></td>
+                    <td><ul class="orders__products">
+                        <% order.products.forEach(p => { %>
+                            <li class="orders__products-item"><%= p.product.title %> (Qty: <%= p.quantity %>) = <%= p.product.price %> Eur </li>
+                        <% }); %>
+                    </ul></td>
+                    <td> </td>
+                   
+                  </tr>
+                  <% }); %>
+                </tbody>
+              </table>
+
+
+              <% } %>
+            </div>
+          </div>
+        </main>
+        <%- include('../includes/end.ejs') %>
