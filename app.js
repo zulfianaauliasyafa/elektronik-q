@@ -15,7 +15,7 @@ const errorController = require('./controllers/error')
 const User = require('./models/user');
 
 //DB Connection
-const MONGODB_URI =  `mongodb://syafa:syafa123@cluster0-shard-00-00.t4thq.mongodb.net:27017,cluster0-shard-00-01.t4thq.mongodb.net:27017,cluster0-shard-00-02.t4thq.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-s6ie9r-shard-0&authSource=admin&retryWrites=true&w=majority`;
+const MONGODB_URI =  `mongodb://faizendra:radityafaiz@cluster0-shard-00-00.chykj.mongodb.net:27017,cluster0-shard-00-01.chykj.mongodb.net:27017,cluster0-shard-00-02.chykj.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-8nqbe8-shard-0&authSource=admin&retryWrites=true&w=majority`;
 
 
 const app = express();
